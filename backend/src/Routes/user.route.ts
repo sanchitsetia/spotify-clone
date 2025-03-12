@@ -1,8 +1,9 @@
 import {Router} from "express"
+import { protectRoute } from "../middleware/auth.middleware"
+import { getAllUsers } from "../controllers/users.controller"
 const router = Router()
 
-router.get("/", (req, res) => {
-  res.send("User Route")
-})
+// @ts-ignore
+router.get("/", protectRoute, getAllUsers)
 
 export default router
